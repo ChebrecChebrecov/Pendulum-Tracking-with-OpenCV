@@ -46,6 +46,10 @@ For a 10 minute video processing time is 20-30 minutes.
 - Convenient UI
 - Several axes analysis
 
+## Research version
+A small research dedicated to the comparison of live tracking and theoretical solution using the runge kutta 4th order method resulted into a graph:
+<img width="1200" height="600" alt="80+simulation" src="https://github.com/user-attachments/assets/5d8eef6d-af3e-452a-bcca-1d7758156538" />
+Model does not include linear friction in the pendulum, string resistance, dynamic air resistance coefficient and complicated moment of inertia of the ball. This may be the reason of stronger oscillation damping.
 ## Contact information
 
 Email: orovor9@gmail.com
