@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 from scipy.fft import fft, fftfreq
-import numpy as np
-import matplotlib.pyplot as plt
 ball_diameter = 2.5
 binary_color_divergence = 80
 g = 9.81
