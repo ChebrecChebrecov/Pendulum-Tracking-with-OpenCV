@@ -48,7 +48,10 @@ For a 10 minute video processing time is 20-30 minutes.
 
 ## Research version
 A small research dedicated to the comparison of live tracking and theoretical solution using the runge kutta 4th order method resulted into a graph:
+The first image is for 0.47 air resistance coefficient and the second is for 0.7 coefficient
 <img width="1200" height="600" alt="80+simulation" src="https://github.com/user-attachments/assets/5d8eef6d-af3e-452a-bcca-1d7758156538" />
+<img width="1200" height="600" alt="80 simulation 0 7" src="https://github.com/user-attachments/assets/72b2a581-d138-4462-b23f-2825fbd6d73f" />
+
 Model does not include linear friction in the pendulum, string resistance, dynamic air resistance coefficient and complicated moment of inertia of the ball. This may be the reason of stronger oscillation damping.
 ## Contact information
 
