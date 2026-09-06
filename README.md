@@ -39,9 +39,9 @@ There is a notable detail on the image: the pendulum oscillates in several axes,
 For a 10 minute video processing time is 20-30 minutes.
 
 ## Possible improvements
-- Comparison between theoretical solution of a differential equation with calculated resistance coefficient and practical result
+- ~~Comparison between theoretical solution of a differential equation with calculated resistance coefficient and practical result~~ - Done!
 - Several objects tracking
-- Oscillation period calculation
+- ~~Oscillation period calculation~~ - Done!
 - CSV export
 - Convenient UI
 - Several axes analysis
