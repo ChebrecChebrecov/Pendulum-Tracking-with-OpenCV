@@ -1,16 +1,21 @@
 # This code is related to the research version of the program with several features designed for a particular object I used in my research
 import cv2
-import matplotlib.pyplot as plt
-import numpy as np
 import os
 from scipy.fft import fft, fftfreq
+import numpy as np
+import matplotlib.pyplot as plt
 ball_diameter = 2.5
 binary_color_divergence = 80
 g = 9.81
 amp = 0.236
 l = 0.358
 m = 0.01
-k = 1/2 * 0.47 * 1.2 * (3.14*0.0125*0.0125)
+k = 1/2 * 0.7 * 1.2 * (3.14*0.0125*0.0125)
+ball_center = 0
+orb = cv2.ORB_create()
+directory = 'images/ball/sample/black_ball.jpg'
+img2 = cv2.imread(directory, 0)
+kp2, des2 = orb.detectAndCompute(img2, None)
 def pendulum_derivatives(t, state):
     theta, omega = state
     dtheta_dt = omega
@@ -51,20 +56,15 @@ def find_coordinates_of_ball(cnts, image):
     return ball_coordinates
 def find_features(img1):
     correct_matches_dct = {}
-    directory = 'images/ball/sample/'
-    for image in os.listdir(directory):
-        img2 = cv2.imread(directory+image, 0)
-        orb = cv2.ORB_create()
-        kp1, des1 = orb.detectAndCompute(img1, None)
-        kp2, des2 = orb.detectAndCompute(img2, None)
-        bf = cv2.BFMatcher()
-        matches = bf.knnMatch(des1, des2, k=2)
-        correct_matches = []
-        for m, n in matches:
-            if m.distance < 0.75*n.distance:
-                correct_matches.append([m])
-        correct_matches_dct[image.split('.')[0]]= len(correct_matches)
-        correct_matches_dct = dict(sorted(correct_matches_dct.items(), key=lambda item: item[1], reverse=True))
+    kp1, des1 = orb.detectAndCompute(img1, None)
+    bf = cv2.BFMatcher()
+    matches = bf.knnMatch(des1, des2, k=2)
+    correct_matches = []
+    for m, n in matches:
+        if m.distance < 0.75*n.distance:
+            correct_matches.append([m])
+    correct_matches_dct["object".split('.')[0]]= len(correct_matches)
+    correct_matches_dct = dict(sorted(correct_matches_dct.items(), key=lambda item: item[1], reverse=True))
     return list(correct_matches_dct.keys())[0]
 def video_to_frames(path, folder):
     cap = cv2.VideoCapture(path)
@@ -86,11 +86,9 @@ def video_to_frames(path, folder):
         gray_main_image = cv2.cvtColor(main_image, cv2.COLOR_BGR2GRAY)
         contours = find_contours_of_ball(gray_main_image)
         ball_location = find_coordinates_of_ball(contours, gray_main_image)
-        ball_center = 0
         for key, value in ball_location.items():
             ball_center = (value[0]+value[2])/2
         points.append(ball_center)
-        print(ball_center)
     fps = cap.get(cv2.CAP_PROP_FPS)
     cap.release()
     mean = sum(points)/frame_count
