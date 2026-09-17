@@ -36,7 +36,7 @@ Plotting X(t)
 ## Visualisation
 <img width="1536" height="850" alt="80image" src="https://github.com/user-attachments/assets/f21ca93d-4e7a-45ca-945b-aa9ea21b50e8"/>
 There is a notable detail on the image: the pendulum oscillates in several axes, so the "main" damped oscillation also oscillates.
-For a 10 minute video processing time is 20-30 minutes.
+For a 10 minute video processing time is 2-3 minutes.
 
 ## Possible improvements
 - ~~Comparison between theoretical solution of a differential equation with calculated resistance coefficient and practical result~~ - Done!
